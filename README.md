@@ -48,23 +48,100 @@ If it saves you a long scroll through a session log, a star on the repo helps ot
 
 ## Open source contributions
 
-I fix the reliability bugs I run into in the AI developer tools I use every day. 36 of my changes have landed in 14 projects. Most of them fix processes that never exit, crashes, silent failures and lost data.
+I fix the reliability bugs I hit in the AI developer tools I use every day: orphaned processes, crashes, silent failures and lost data. 36 of my changes have been merged into 14 projects with <b>more than 200,000 stars</b> combined.
 
-| Project | Stars | Landed | What I fixed |
-|:--|:--|:-:|:--|
-| [**oh-my-claudecode**](https://github.com/Yeachan-Heo/oh-my-claudecode)<br><sub>Yeachan-Heo</sub> | ![stars](https://img.shields.io/github/stars/Yeachan-Heo/oh-my-claudecode?style=flat&logo=github&label=) | 9 | Unified 8 copies of the process-liveness check, 5 of which treated `EPERM` as a dead process ([#1843](https://github.com/Yeachan-Heo/oh-my-claudecode/pull/1843)); moved stop-hook enforcement into the scripts that actually run ([#1480](https://github.com/Yeachan-Heo/oh-my-claudecode/pull/1480), [#1482](https://github.com/Yeachan-Heo/oh-my-claudecode/pull/1482)). |
-| [**oh-my-codex**](https://github.com/Yeachan-Heo/oh-my-codex)<br><sub>Yeachan-Heo</sub> | ![stars](https://img.shields.io/github/stars/Yeachan-Heo/oh-my-codex?style=flat&logo=github&label=) | 6 | Stopped `codex` from being orphaned when tmux kills its session ([#1605](https://github.com/Yeachan-Heo/oh-my-codex/pull/1605)); made the runtime bridge survive partial writes ([#1918](https://github.com/Yeachan-Heo/oh-my-codex/pull/1918)) and report failed disk writes instead of exiting 0 ([#1303](https://github.com/Yeachan-Heo/oh-my-codex/pull/1303)). |
-| [**oh-my-openagent**](https://github.com/code-yeongyu/oh-my-openagent)<br><sub>code-yeongyu</sub> | ![stars](https://img.shields.io/github/stars/code-yeongyu/oh-my-openagent?style=flat&logo=github&label=) | 1 | Fixed idle stdio MCP servers that could never exit, because the idle timeout never closed stdin. Reported in [#6547](https://github.com/code-yeongyu/oh-my-openagent/issues/6547); both commits landed in [#7525](https://github.com/code-yeongyu/oh-my-openagent/pull/7525). |
-| [**openworker**](https://github.com/andrewyng/openworker)<br><sub>andrewyng</sub> | ![stars](https://img.shields.io/github/stars/andrewyng/openworker?style=flat&logo=github&label=) | 1 | Made the conversation-log rewrite atomic, so a crash during context compaction can no longer wipe a conversation history ([#70](https://github.com/andrewyng/openworker/pull/70)). |
-| [**opencodex**](https://github.com/lidge-jun/opencodex)<br><sub>lidge-jun</sub> | ![stars](https://img.shields.io/github/stars/lidge-jun/opencodex?style=flat&logo=github&label=) | 2 | Capped the response spill directory, which had no total size limit and could fill a disk within an hour ([#3097](https://github.com/lidge-jun/opencodex/pull/3097)); fixed tests that assumed pid 4242 is always free ([#3137](https://github.com/lidge-jun/opencodex/pull/3137)). |
-| [**PyMuPDF**](https://github.com/pymupdf/PyMuPDF)<br><sub>pymupdf</sub> | ![stars](https://img.shields.io/github/stars/pymupdf/PyMuPDF?style=flat&logo=github&label=) | 1 | Fixed a segfault in the C++ bindings when a `get_cdrawings()` callback raises; the failure is now reported and extraction continues ([#5139](https://github.com/pymupdf/PyMuPDF/pull/5139)). |
-| [**gajae-code**](https://github.com/Yeachan-Heo/gajae-code)<br><sub>Yeachan-Heo</sub> | ![stars](https://img.shields.io/github/stars/Yeachan-Heo/gajae-code?style=flat&logo=github&label=) | 6 | A quota failure now marks the account that actually failed ([#5422](https://github.com/Yeachan-Heo/gajae-code/pull/5422)); an OAuth token rejected before its expiry is refreshed instead of leaving quota readings stale ([#6260](https://github.com/Yeachan-Heo/gajae-code/pull/6260)). |
-| [**ouroboros**](https://github.com/Q00/ouroboros)<br><sub>Q00</sub> | ![stars](https://img.shields.io/github/stars/Q00/ouroboros?style=flat&logo=github&label=) | 3 | Stopped the welcome suggestion from firing forever for already-configured users ([#1152](https://github.com/Q00/ouroboros/pull/1152)); fixed a crash on `null` MCP parameters ([#325](https://github.com/Q00/ouroboros/pull/325)). |
-| [**cmux**](https://github.com/manaflow-ai/cmux)<br><sub>manaflow-ai</sub> | ![stars](https://img.shields.io/github/stars/manaflow-ai/cmux?style=flat&logo=github&label=) | 1 | Replaced force-unwrapped UTF-8 conversions on file-write paths ([#1834](https://github.com/manaflow-ai/cmux/pull/1834)). |
-
-Smaller fixes also landed in [oh-my-agent](https://github.com/first-fluke/oh-my-agent/pull/265) (an SQL-injection check that had never actually run), [memkraft](https://github.com/seojoonkim/memkraft/pull/3) (`recall` reported every stored entity as missing), [prism-insight](https://github.com/dragon1086/prism-insight/pull/227), [agf](https://github.com/subinium/agf/pull/1) and [openlogs](https://github.com/charlietlamb/openlogs/pull/3).
-
-Two problems I reported were fixed by the maintainers: gajae-code showed an Anthropic rate limit as a generic stream timeout ([#1368](https://github.com/Yeachan-Heo/gajae-code/issues/1368), fixed in [#1369](https://github.com/Yeachan-Heo/gajae-code/pull/1369)), and oh-my-codex shipped with three high-severity vulnerable dependencies ([#888](https://github.com/Yeachan-Heo/oh-my-codex/issues/888), patched in [#889](https://github.com/Yeachan-Heo/oh-my-codex/pull/889) together with a Dependabot setup).
+<table>
+<tr>
+<th width="120">Stars</th>
+<th width="180" align="left">Project</th>
+<th width="70">PRs</th>
+<th width="476" align="left">Contribution</th>
+</tr>
+<tr>
+<td width="120" align="center" valign="middle"><a href="https://github.com/code-yeongyu/oh-my-openagent"><img src="https://img.shields.io/github/stars/code-yeongyu/oh-my-openagent?style=for-the-badge&logo=github&logoColor=white&label=&labelColor=24292f&color=e3b341" alt="oh-my-openagent stars"></a></td>
+<td width="180" nowrap valign="middle"><a href="https://github.com/code-yeongyu/oh-my-openagent"><b>oh-my-openagent</b></a><br><sub>code-yeongyu</sub></td>
+<td width="70" align="center" valign="middle"><b>1</b><br><sub><a href="https://github.com/code-yeongyu/oh-my-openagent/pull/7525">#7525</a></sub></td>
+<td width="476" valign="middle">Stopped abandoned stdio MCP servers from running forever: the idle timeout never closed stdin, so they could not exit. Reported the bug and wrote the fix.</td>
+</tr>
+<tr>
+<td width="120" align="center" valign="middle"><a href="https://github.com/Yeachan-Heo/oh-my-claudecode"><img src="https://img.shields.io/github/stars/Yeachan-Heo/oh-my-claudecode?style=for-the-badge&logo=github&logoColor=white&label=&labelColor=24292f&color=e3b341" alt="oh-my-claudecode stars"></a></td>
+<td width="180" nowrap valign="middle"><a href="https://github.com/Yeachan-Heo/oh-my-claudecode"><b>oh-my-claudecode</b></a><br><sub>Yeachan-Heo</sub></td>
+<td width="70" align="center" valign="middle"><b>9</b><br><sub><a href="https://github.com/Yeachan-Heo/oh-my-claudecode/pull/1843">#1843</a><br><a href="https://github.com/Yeachan-Heo/oh-my-claudecode/pull/1480">#1480</a><br><a href="https://github.com/Yeachan-Heo/oh-my-claudecode/pull/1482">#1482</a></sub></td>
+<td width="476" valign="middle">Unified 8 divergent process-liveness checks, 5 of which mistook live processes for dead ones on <code>EPERM</code>, and wired stop-hook safeguards into the scripts that actually run instead of code that was never invoked.</td>
+</tr>
+<tr>
+<td width="120" align="center" valign="middle"><a href="https://github.com/Yeachan-Heo/oh-my-codex"><img src="https://img.shields.io/github/stars/Yeachan-Heo/oh-my-codex?style=for-the-badge&logo=github&logoColor=white&label=&labelColor=24292f&color=e3b341" alt="oh-my-codex stars"></a></td>
+<td width="180" nowrap valign="middle"><a href="https://github.com/Yeachan-Heo/oh-my-codex"><b>oh-my-codex</b></a><br><sub>Yeachan-Heo</sub></td>
+<td width="70" align="center" valign="middle"><b>6</b><br><sub><a href="https://github.com/Yeachan-Heo/oh-my-codex/pull/1605">#1605</a><br><a href="https://github.com/Yeachan-Heo/oh-my-codex/pull/1918">#1918</a><br><a href="https://github.com/Yeachan-Heo/oh-my-codex/pull/1303">#1303</a></sub></td>
+<td width="476" valign="middle">Prevented orphaned <code>codex</code> processes when tmux kills a session, kept the HUD and dispatch loop alive through partial writes, and made failed state writes fail loudly instead of reporting success. Also reported three high-severity dependency vulnerabilities, since patched.</td>
+</tr>
+<tr>
+<td width="120" align="center" valign="middle"><a href="https://github.com/manaflow-ai/cmux"><img src="https://img.shields.io/github/stars/manaflow-ai/cmux?style=for-the-badge&logo=github&logoColor=white&label=&labelColor=24292f&color=e3b341" alt="cmux stars"></a></td>
+<td width="180" nowrap valign="middle"><a href="https://github.com/manaflow-ai/cmux"><b>cmux</b></a><br><sub>manaflow-ai</sub></td>
+<td width="70" align="center" valign="middle"><b>1</b><br><sub><a href="https://github.com/manaflow-ai/cmux/pull/1834">#1834</a></sub></td>
+<td width="476" valign="middle">Removed force-unwraps from file-write paths, switching to UTF-8 conversions that cannot fail.</td>
+</tr>
+<tr>
+<td width="120" align="center" valign="middle"><a href="https://github.com/andrewyng/openworker"><img src="https://img.shields.io/github/stars/andrewyng/openworker?style=for-the-badge&logo=github&logoColor=white&label=&labelColor=24292f&color=e3b341" alt="openworker stars"></a></td>
+<td width="180" nowrap valign="middle"><a href="https://github.com/andrewyng/openworker"><b>openworker</b></a><br><sub>andrewyng</sub></td>
+<td width="70" align="center" valign="middle"><b>1</b><br><sub><a href="https://github.com/andrewyng/openworker/pull/70">#70</a></sub></td>
+<td width="476" valign="middle">Made conversation-log rewrites atomic, closing a window where a crash during context compaction could wipe the history.</td>
+</tr>
+<tr>
+<td width="120" align="center" valign="middle"><a href="https://github.com/lidge-jun/opencodex"><img src="https://img.shields.io/github/stars/lidge-jun/opencodex?style=for-the-badge&logo=github&logoColor=white&label=&labelColor=24292f&color=e3b341" alt="opencodex stars"></a></td>
+<td width="180" nowrap valign="middle"><a href="https://github.com/lidge-jun/opencodex"><b>opencodex</b></a><br><sub>lidge-jun</sub></td>
+<td width="70" align="center" valign="middle"><b>2</b><br><sub><a href="https://github.com/lidge-jun/opencodex/pull/3097">#3097</a><br><a href="https://github.com/lidge-jun/opencodex/pull/3137">#3137</a></sub></td>
+<td width="476" valign="middle">Capped the response spill directory, which was unbounded and could fill a disk within an hour, and fixed tests that failed whenever pid 4242 happened to be in use.</td>
+</tr>
+<tr>
+<td width="120" align="center" valign="middle"><a href="https://github.com/pymupdf/PyMuPDF"><img src="https://img.shields.io/github/stars/pymupdf/PyMuPDF?style=for-the-badge&logo=github&logoColor=white&label=&labelColor=24292f&color=e3b341" alt="PyMuPDF stars"></a></td>
+<td width="180" nowrap valign="middle"><a href="https://github.com/pymupdf/PyMuPDF"><b>PyMuPDF</b></a><br><sub>pymupdf</sub></td>
+<td width="70" align="center" valign="middle"><b>1</b><br><sub><a href="https://github.com/pymupdf/PyMuPDF/pull/5139">#5139</a></sub></td>
+<td width="476" valign="middle">Turned a hard segfault in the C++ bindings into a reported error: an exception in a <code>get_cdrawings()</code> callback used to crash the process, and extraction now carries on.</td>
+</tr>
+<tr>
+<td width="120" align="center" valign="middle"><a href="https://github.com/Q00/ouroboros"><img src="https://img.shields.io/github/stars/Q00/ouroboros?style=for-the-badge&logo=github&logoColor=white&label=&labelColor=24292f&color=e3b341" alt="ouroboros stars"></a></td>
+<td width="180" nowrap valign="middle"><a href="https://github.com/Q00/ouroboros"><b>ouroboros</b></a><br><sub>Q00</sub></td>
+<td width="70" align="center" valign="middle"><b>3</b><br><sub><a href="https://github.com/Q00/ouroboros/pull/1152">#1152</a><br><a href="https://github.com/Q00/ouroboros/pull/325">#325</a><br><a href="https://github.com/Q00/ouroboros/pull/154">#154</a></sub></td>
+<td width="476" valign="middle">Stopped the welcome suggestion from reappearing in every session for already-configured users, fixed a crash on <code>null</code> MCP parameters, and narrowed 30 bare <code>except Exception</code> clauses that could hide real bugs.</td>
+</tr>
+<tr>
+<td width="120" align="center" valign="middle"><a href="https://github.com/Yeachan-Heo/gajae-code"><img src="https://img.shields.io/github/stars/Yeachan-Heo/gajae-code?style=for-the-badge&logo=github&logoColor=white&label=&labelColor=24292f&color=e3b341" alt="gajae-code stars"></a></td>
+<td width="180" nowrap valign="middle"><a href="https://github.com/Yeachan-Heo/gajae-code"><b>gajae-code</b></a><br><sub>Yeachan-Heo</sub></td>
+<td width="70" align="center" valign="middle"><b>6</b><br><sub><a href="https://github.com/Yeachan-Heo/gajae-code/pull/5422">#5422</a><br><a href="https://github.com/Yeachan-Heo/gajae-code/pull/6260">#6260</a><br><a href="https://github.com/Yeachan-Heo/gajae-code/pull/6333">#6333</a></sub></td>
+<td width="476" valign="middle">Made quota failover mark the account that actually ran out, recovered OAuth tokens rejected before expiry that left quota readings stale, and stopped queued requests from receiving another run's answer. Also reported a rate limit hidden behind a generic stream timeout, since fixed.</td>
+</tr>
+<tr>
+<td width="120" align="center" valign="middle"><a href="https://github.com/first-fluke/oh-my-agent"><img src="https://img.shields.io/github/stars/first-fluke/oh-my-agent?style=for-the-badge&logo=github&logoColor=white&label=&labelColor=24292f&color=e3b341" alt="oh-my-agent stars"></a></td>
+<td width="180" nowrap valign="middle"><a href="https://github.com/first-fluke/oh-my-agent"><b>oh-my-agent</b></a><br><sub>first-fluke</sub></td>
+<td width="70" align="center" valign="middle"><b>1</b><br><sub><a href="https://github.com/first-fluke/oh-my-agent/pull/265">#265</a></sub></td>
+<td width="476" valign="middle">Fixed an SQL-injection check that had never actually run: broken shell quoting made it pass every input, including real injection patterns.</td>
+</tr>
+<tr>
+<td width="120" align="center" valign="middle"><a href="https://github.com/dragon1086/prism-insight"><img src="https://img.shields.io/github/stars/dragon1086/prism-insight?style=for-the-badge&logo=github&logoColor=white&label=&labelColor=24292f&color=e3b341" alt="prism-insight stars"></a></td>
+<td width="180" nowrap valign="middle"><a href="https://github.com/dragon1086/prism-insight"><b>prism-insight</b></a><br><sub>dragon1086</sub></td>
+<td width="70" align="center" valign="middle"><b>1</b><br><sub><a href="https://github.com/dragon1086/prism-insight/pull/227">#227</a></sub></td>
+<td width="476" valign="middle">Fixed a module-cache collision that crashed the US stock analysis pipeline with import errors.</td>
+</tr>
+<tr>
+<td width="120" align="center" valign="middle"><a href="https://github.com/charlietlamb/openlogs"><img src="https://img.shields.io/github/stars/charlietlamb/openlogs?style=for-the-badge&logo=github&logoColor=white&label=&labelColor=24292f&color=e3b341" alt="openlogs stars"></a></td>
+<td width="180" nowrap valign="middle"><a href="https://github.com/charlietlamb/openlogs"><b>openlogs</b></a><br><sub>charlietlamb</sub></td>
+<td width="70" align="center" valign="middle"><b>1</b><br><sub><a href="https://github.com/charlietlamb/openlogs/pull/3">#3</a></sub></td>
+<td width="476" valign="middle">Added a pre-publish gate, so a failing test suite can no longer ship a broken package to npm.</td>
+</tr>
+<tr>
+<td width="120" align="center" valign="middle"><a href="https://github.com/seojoonkim/memkraft"><img src="https://img.shields.io/github/stars/seojoonkim/memkraft?style=for-the-badge&logo=github&logoColor=white&label=&labelColor=24292f&color=e3b341" alt="memkraft stars"></a></td>
+<td width="180" nowrap valign="middle"><a href="https://github.com/seojoonkim/memkraft"><b>memkraft</b></a><br><sub>seojoonkim</sub></td>
+<td width="70" align="center" valign="middle"><b>2</b><br><sub><a href="https://github.com/seojoonkim/memkraft/pull/3">#3</a><br><a href="https://github.com/seojoonkim/memkraft/pull/2">#2</a></sub></td>
+<td width="476" valign="middle">Fixed <code>recall</code> reporting every stored entity as missing, so agents see their stored memories again, and made <code>track()</code> return the path it creates.</td>
+</tr>
+<tr>
+<td width="120" align="center" valign="middle"><a href="https://github.com/subinium/agf"><img src="https://img.shields.io/github/stars/subinium/agf?style=for-the-badge&logo=github&logoColor=white&label=&labelColor=24292f&color=e3b341" alt="agf stars"></a></td>
+<td width="180" nowrap valign="middle"><a href="https://github.com/subinium/agf"><b>agf</b></a><br><sub>subinium</sub></td>
+<td width="70" align="center" valign="middle"><b>1</b><br><sub><a href="https://github.com/subinium/agf/pull/1">#1</a></sub></td>
+<td width="476" valign="middle">Removed duplicated path helpers from the delete command, so it resolves the Claude and Codex directories through the shared config code.</td>
+</tr>
+</table>
 
 ## What I work on
 
